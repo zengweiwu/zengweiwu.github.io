@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        这是用ssh提交的｜undefined
+        旅游网项目小结｜undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2020/08/21/测试ssh提交/">
+    <link rel="canonical" href="http://yoursite.com/2020/08/28/旅游网项目小结/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -143,12 +143,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>这是用ssh提交的</h1>
+                    <h1>旅游网项目小结</h1>
                     
                     <span class="meta">
                          作者 John Doe
                         <span>
-                          日期 2020-08-21
+                          日期 2020-08-28
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -160,7 +160,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            这是用ssh提交的
+            旅游网项目小结
         </span>
     </div>
 </header>
@@ -171,12 +171,59 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="git提交步骤"><a href="#git提交步骤" class="headerlink" title="git提交步骤"></a>git提交步骤</h2><ol>
-<li>git add . //</li>
-<li>git commit -m “添加描述信息”</li>
-<li>git remote add origin git地址</li>
-<li>git push -u origin master</li>
+                <p>@<a href="%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95">TOC</a></p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇博客就是简单总结下完成项目过程中遇到的问题和学到的东西。</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+
+
+<h1 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h1><h2 id="web层"><a href="#web层" class="headerlink" title="web层"></a>web层</h2><ol>
+<li>前端控制</li>
+<li>Servlet：前端控制器</li>
+<li>ajax:发送异步请求</li>
+<li>html ：视图</li>
+<li>Filter：过滤器</li>
+<li>BeanUtils：数据封装</li>
+<li>Jackson：json序列化工具</li>
 </ol>
+<h2 id="service层"><a href="#service层" class="headerlink" title="service层"></a>service层</h2><ol start="8">
+<li>javamail：java发送邮件工具</li>
+<li>Redis：nosql内存数据库</li>
+<li>Jedis：java的redis客户端</li>
+</ol>
+<h2 id="DAO层"><a href="#DAO层" class="headerlink" title="DAO层"></a>DAO层</h2><ol start="11">
+<li>Mysql：数据库</li>
+<li>Druid：数据库连接池</li>
+<li>JdbcTemplate：jdbc的工具</li>
+</ol>
+<h2 id="关于maven"><a href="#关于maven" class="headerlink" title="关于maven"></a>关于maven</h2><ol>
+<li><p><strong>maven的作用</strong>:maven能帮你构建工程，管理 jar包，编译代码，还能帮你自动运行单元测试，打包，生成报表，甚至能帮你部署项目，生成 Web 站点。</p>
+</li>
+<li><p><strong>maven的优势</strong>：使用maven给我最直观的便利就是找jar包很方便，再也不用自己手动去网上下载jar了。还有一个大的便利就是maven的一键构建的功能，编译打包部署一气呵成。这是maven的两个最大的优势。</p>
+</li>
+<li><p><strong>maven的配置</strong>：<br>  第一步我们安装好maven后需要配置下环境变量<br>  <img src="https://img-blog.csdnimg.cn/20200821202142258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVjX2M=,size_16,color_FFFFFF,t_70#pic_center" alt="配置环境变量"></p>
+<p>  第二步我们找到maven安装目录下的conf文件下的setting.xml文件，打开文件找到<localRepository>/path/to/local/repo</localRepository>标签，（记得要去掉注释）将标签中的地址换成我们的本地仓库（本地仓库的话可以自己网上找）就可以了。为什么要配置本地仓库呢？如果没有配置本地仓库maven会去中央仓库联网下载jar包（如果有远程仓库的话会先去远程仓库下载），而maven中央仓库是在国外的可想而知比较慢，当然你也可以配置下中央仓库国内的镜像，配置了本地仓库如果本地仓库有的话就直接从本地就不需要联网下载了。如果想要搞一些个性化的配置我们可以到用户目录下的setting.xml文件中配置。<br>  <img src="https://img-blog.csdnimg.cn/20200821202630908.png#pic_center" alt="在这里插入图片描述"><br><strong>我对maven的理解</strong>：<br>我觉得maven就像一个管家，就比如说我们平常一个人做饭，首先要做菜我们得先有菜吧，所以我们得先去买菜，要买肉去肉铺买，买蔬菜去卖蔬菜的地方买，买调料去商店买，好不买好菜了，于是我们回家做饭，做完饭不经感慨做饭真是不容易，买菜走得腿都要缺了，这时候我们想要是有管家能帮我们买菜就好了，这样我们就有更多的时间来专心于做饭了。写代码就像做饭，而maven就是那个管家，他帮我们解决了“买菜”的过程，我们只要告诉他我们需要什么“菜”什么“调料”，他就能帮我们准备好,我们只管专心“做饭”了。</p>
+</li>
+</ol>
+<h1 id="遇到的问题以及解决办法"><a href="#遇到的问题以及解决办法" class="headerlink" title="遇到的问题以及解决办法"></a>遇到的问题以及解决办法</h1><ol>
+<li><p>在写注册激活模块的时，使用javaMail发送邮件，输入了正确的邮箱和密码，但是不能发送邮件，后来了解到要通过第三方平台发送邮件的话需要授权码，申请授权码后，将用户名和授权码传给javaMai就能发送邮件了。</p>
+</li>
+<li><p>退出功能是利用超链接发送一个请求给后端，然后后端销毁session，重定向到登陆页面。在这里遇到的问题是请求发不出去，后来发现是我前台的请求路径写得不对，给浏览器的路径是绝对路径但是没有写虚拟路径的名称，所以导致了请求发送部出去。修改路径后问题解决。</p>
+</li>
+<li><p>我们每写一个功能都要写一个servlet，这样servlet会很多，于是做了下优化，创建一个baseservlet继承自httpservlet，重写里面的service方法，在这里通过反射完成方法的调用，我们再写一个userservlet继承自baseservlet，添加我们实现相关功能的方法就可以了，这样有关用户的功能只需要一个servlet就可以实现了。当时不是很理解这种做法，和它实现的原理，最后通过查看httpservlet源码理解了，继承方式如下：<br><img src="https://img-blog.csdnimg.cn/20200822112449896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NvZGVjX2M=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+</li>
+</ol>
+<ol start="4">
+<li><p>分类的数据在每一次页面加载后都会重新请求数据库来加载，对数据库的压力比较大，而且分类的数据不会经常产生变化，所有可以使用redis来缓存这个数据。第一次访问时我们先从缓存中查，但是这时候缓存里面肯定是没有数据的，我们得先从数据库查询，查询出来返回一个分类对象的list，然后在将查询出来的list存到缓存中去，第二次我们就能够直接从缓存中取出数据了，但是后面发现我们从缓存中取出来的数据没有cid，而且每次查询出来的数据顺序都是不一样的。检查发现在向缓存中存数据的时候我们用的是set集合，而这个集合是无序的当然查出来的顺序是乱的。最后使用zset解决了以上问题。</p>
+</li>
+<li><p>在做组合条件查询的时候遇到了如何获取查询请求参数的问题，最后是给搜索按钮绑定了一个单击事件，当点击按钮时从搜索框获取搜索关键字，将关键字作为参数放到地址栏传递给路线列表页面，当页面完成加载时，从地址栏获取参数发送请求，由于从地址栏获取的中文的参数时用了uri编码的，所以记得先解码再传递参数到后端。</p>
+</li>
+<li><p>。。。</p>
+</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>以上就是这次项目中遇到一些主要问题，还有一些问题忘记了，把记得的做一个简单的记录。只有不断发现问题解决问题技术才能长进。</p>
 
                 <hr>
                 
@@ -205,7 +252,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E6%8F%90%E4%BA%A4%E6%AD%A5%E9%AA%A4"><span class="toc-text">git提交步骤</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="toc-text">技术选型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web%E5%B1%82"><span class="toc-text">web层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#service%E5%B1%82"><span class="toc-text">service层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DAO%E5%B1%82"><span class="toc-text">DAO层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Emaven"><span class="toc-text">关于maven</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-text">遇到的问题以及解决办法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
                 </div>
             </div>
         </div>
