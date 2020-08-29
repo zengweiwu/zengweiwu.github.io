@@ -34,8 +34,8 @@
 </li>
 <li><p><strong>maven的优势</strong>：使用maven给我最直观的便利就是找jar包很方便，再也不用自己手动去网上下载jar了。还有一个大的便利就是maven的一键构建的功能，编译打包部署一气呵成。这是maven的两个最大的优势。</p>
 </li>
-<li><p><strong>maven的配置</strong>：<br>  第一步我们安装好maven后需要配置下环境变量<br>  <img src= "/img/loading.gif" data-lazy-src="1.png" alt="配置环境变量"></p>
-<p>  第二步我们找到maven安装目录下的conf文件下的setting.xml文件，打开文件找到<localRepository>/path/to/local/repo</localRepository>标签，（记得要去掉注释）将标签中的地址换成我们的本地仓库（本地仓库的话可以自己网上找）就可以了。为什么要配置本地仓库呢？如果没有配置本地仓库maven会去中央仓库联网下载jar包（如果有远程仓库的话会先去远程仓库下载），而maven中央仓库是在国外的可想而知比较慢，当然你也可以配置下中央仓库国内的镜像，配置了本地仓库如果本地仓库有的话就直接从本地就不需要联网下载了。如果想要搞一些个性化的配置我们可以到用户目录下的setting.xml文件中配置。<br><img src= "/img/loading.gif" data-lazy-src="2.png" alt="alt"><br><strong>我对maven的理解</strong>：<br>我觉得maven就像一个管家，就比如说我们平常一个人做饭，首先要做菜我们得先有菜吧，所以我们得先去买菜，要买肉去肉铺买，买蔬菜去卖蔬菜的地方买，买调料去商店买，好不买好菜了，于是我们回家做饭，做完饭不经感慨做饭真是不容易，买菜走得腿都要缺了，这时候我们想要是有管家能帮我们买菜就好了，这样我们就有更多的时间来专心于做饭了。写代码就像做饭，而maven就是那个管家，他帮我们解决了“买菜”的过程，我们只要告诉他我们需要什么“菜”什么“调料”，他就能帮我们准备好,我们只管专心“做饭”了。</p>
+<li><p><strong>maven的配置</strong>：<br>  第一步我们安装好maven后需要配置下环境变量<br>  <img src= "/img/loading.gif" data-lazy-src="https://imgchr.com/i/dT5QRU" alt="配置环境变量"></p>
+<p>  第二步我们找到maven安装目录下的conf文件下的setting.xml文件，打开文件找到<localRepository>/path/to/local/repo</localRepository>标签，（记得要去掉注释）将标签中的地址换成我们的本地仓库（本地仓库的话可以自己网上找）就可以了。为什么要配置本地仓库呢？如果没有配置本地仓库maven会去中央仓库联网下载jar包（如果有远程仓库的话会先去远程仓库下载），而maven中央仓库是在国外的可想而知比较慢，当然你也可以配置下中央仓库国内的镜像，配置了本地仓库如果本地仓库有的话就直接从本地就不需要联网下载了。如果想要搞一些个性化的配置我们可以到用户目录下的setting.xml文件中配置。<br><img src= "/img/loading.gif" data-lazy-src="https://imgchr.com/i/dT5KiV" alt="alt"><br><strong>我对maven的理解</strong>：<br>我觉得maven就像一个管家，就比如说我们平常一个人做饭，首先要做菜我们得先有菜吧，所以我们得先去买菜，要买肉去肉铺买，买蔬菜去卖蔬菜的地方买，买调料去商店买，好不买好菜了，于是我们回家做饭，做完饭不经感慨做饭真是不容易，买菜走得腿都要缺了，这时候我们想要是有管家能帮我们买菜就好了，这样我们就有更多的时间来专心于做饭了。写代码就像做饭，而maven就是那个管家，他帮我们解决了“买菜”的过程，我们只要告诉他我们需要什么“菜”什么“调料”，他就能帮我们准备好,我们只管专心“做饭”了。</p>
 </li>
 </ol>
 <h1 id="遇到的问题以及解决办法"><a href="#遇到的问题以及解决办法" class="headerlink" title="遇到的问题以及解决办法"></a>遇到的问题以及解决办法</h1><ol>
@@ -46,7 +46,7 @@
 <li><p>我们每写一个功能都要写一个servlet，这样servlet会很多，于是做了下优化，创建一个baseservlet继承自httpservlet，重写里面的service方法，在这里通过反射完成方法的调用，我们再写一个userservlet继承自baseservlet，添加我们实现相关功能的方法就可以了，这样有关用户的功能只需要一个servlet就可以实现了。当时不是很理解这种做法，和它实现的原理，最后通过查看httpservlet源码理解了，继承方式如下：</p>
 </li>
 </ol>
-<p><img src= "/img/loading.gif" data-lazy-src="3.png" alt="alt"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://imgchr.com/i/dT5MGT" alt="alt"></p>
 <ol start="4">
 <li><p>分类的数据在每一次页面加载后都会重新请求数据库来加载，对数据库的压力比较大，而且分类的数据不会经常产生变化，所有可以使用redis来缓存这个数据。第一次访问时我们先从缓存中查，但是这时候缓存里面肯定是没有数据的，我们得先从数据库查询，查询出来返回一个分类对象的list，然后在将查询出来的list存到缓存中去，第二次我们就能够直接从缓存中取出数据了，但是后面发现我们从缓存中取出来的数据没有cid，而且每次查询出来的数据顺序都是不一样的。检查发现在向缓存中存数据的时候我们用的是set集合，而这个集合是无序的当然查出来的顺序是乱的。最后使用zset解决了以上问题。</p>
 </li>
