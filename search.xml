@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo+github搭建个人博客</title>
+    <url>/2020/09/06/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h1><p>hexo支持markdown语法，它是基于nodejs的静态网站生成框架，nodejs是一个基于Chrome的JavaScript运行环境，要想运行hexo首先要安装其运行环境nodejs。</p>
+<ul>
+<li>nodejs的安装<br><a href="https://nodejs.org/dist/v9.11.1/node-v9.11.1-x64.msi">nodejs win 64 下载地址</a><br>下载下来一路next即可<br>安装完成后，打开命令行输入 node -v 和 npm -v 显示出版本信息就是安装成功了！<br>为了加快访问速度，输入以下命令添加阿里镜像进行加速<blockquote>
+<p>npm config set registry <a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></p>
+</blockquote>
+<h1 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h1><a href="https://git-scm.com/download/win">git下载地址</a><br>git是一个分布式版本控制工具，安装git可以将我们的博客网页部署到服务器上。git的安装也是很简单，安装时选项全部默认，只不过最后一步选<br>Use Git from the Windows Command Prompt</li>
+</ul>
+<p>点击finish。接着我们在命令提示符中输入git –version显示版本信息则我们的git安装成功！</p>
+<h1 id="github新建仓库"><a href="#github新建仓库" class="headerlink" title="github新建仓库"></a>github新建仓库</h1><ul>
+<li>新建仓库时，仓库的名字后面一定要加.github.io后缀。</li>
+<li>仓库建成了，点击Settings，下拉到最后选择GitHub Pages，点击Choose a theme选择一个主题。然后等一会儿，再回到GitHub Pages，会有一个超链接，这个链接就是我们的博客网址了。<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1></li>
+<li>在合适的地方新建一个目录来存放你的博客，然后在新建的目录下打开git的控制台窗口：<br><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/09/06/wZQZin.md.png" alt="打开控制台在这里面输入命令安装hexo"></li>
+</ul>
+<ul>
+<li><p>好的，我们现在就在我们刚刚新建的目录下面，接着输入npm i hexo-cli -g安装Hexo。会有几个报错，不要管它，输入 hexo -v 验证是否安装成功，出现版本信息则安装成功！</p>
+</li>
+<li><p>接着输入hexo init初始化我们新建的博客文件夹，接着输入npm install安装依赖。</p>
+</li>
+<li><p>好了，到这里我们可以来测试下hexo了，输入hexo g生成静态网页，然后输入hexo s打开本地服务器，浏览器打开<a href="http://localhost:4000/%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%88%91%E4%BB%AC%E7%9A%84%E5%8D%9A%E5%AE%A2%E4%BA%86%E3%80%82%E7%8E%B0%E5%9C%A8%E6%88%91%E4%BB%AC%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%BF%98%E6%98%AF%E5%9C%A8%E6%9C%AC%E5%9C%B0%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%88%91%E4%BB%AC%E8%A6%81%E5%88%A9%E7%94%A8git%E5%B0%86%E5%85%B6%E9%83%A8%E7%BD%B2%E5%88%B0%E8%BF%9C%E7%A8%8B%E7%9A%84github%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%88%AB%E4%BA%BA%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE%E5%88%B0%E6%88%91%E4%BB%AC%E7%9A%84%E5%8D%9A%E5%AE%A2%E4%BA%86%E3%80%82">http://localhost:4000/就可以看到我们的博客了。现在我们的博客还是在本地，接下来我们要利用git将其部署到远程的github服务器上，这样别人就可以访问到我们的博客了。</a></p>
+</li>
+</ul>
+<h1 id="连接Github"><a href="#连接Github" class="headerlink" title="连接Github"></a>连接Github</h1><ul>
+<li><p>打开git bash，然后输入下面命令：</p>
+<blockquote>
+<p> git config –global user.name “你的github用户面积”<br>git config –global user.email “你的github注册邮箱”</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>输入以下命令生成密钥SSH key：</p>
+<blockquote>
+<p>ssh-keygen -t rsa -C “你的github注册邮箱”</p>
+</blockquote>
+</li>
+<li><p>登录github，进入settings，再点击SSH and GPG keys，新建一个SSH。</p>
+</li>
+<li><p>git bash中输入：</p>
+<blockquote>
+<p>cat ~/.ssh/id_rsa.pub</p>
+</blockquote>
+<p>将id_ras.pub公钥里面的内容填入github新建密钥的框中，保存。</p>
+</li>
+<li><p>控制台，输入ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#109;">&#x67;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#109;</a>，出现你的用户名则连接github成功！</p>
+</li>
+<li><p>打开我们刚刚初始化的博客目录，找到_config.yml文件，配置部署的相关信息：<br>deploy:<br>type: git<br>repository:这里填你github博客仓库的地址<br>  branch: master<br>repository修改为你自己的github项目地址。</p>
+<h1 id="安装部署工具"><a href="#安装部署工具" class="headerlink" title="安装部署工具"></a>安装部署工具</h1></li>
+</ul>
+<p>首先在博客根目录下打开git bash，输入：</p>
+<blockquote>
+<p>npm i hexo-deployer-git</p>
+</blockquote>
+<p>npm会帮我们安装好部署工具，以后我们就可以实现一键部署我们的博客了！</p>
+<h1 id="写博客-部署"><a href="#写博客-部署" class="headerlink" title="写博客 部署"></a>写博客 部署</h1><p>在博客目录下打开git bash 输入hexo new post “article title”，新建一篇文章。你会看到在当前的source_posts的目录中多了一个.md文件，这就是你新建的文章了。</p>
+<p>接下来我们可以打开这个md文件用markdown编写博客。编写完成保存！</p>
+<p>然后输入hexo g生成静态网页，生成的静态网页在根目录下的public文件夹中，输入hexo server 可以本地预览自己的博客，输入hexo d的话就上传到github上，刷新github，在地址栏输入自己的博客网址打开主页，我们就可以看到自己的文章了！</p>
+<h1 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h1><p>可能有很多人觉得这个默认的主题不好看，没关系我们可以自己选择自己喜欢的主题。我选择的主题是butterfly，简单明了，配置多样，当然好像选next的更多hhh。<br>这是butterfly主题的下载地址：<a href="https://github.com/jerryc127/hexo-theme-butterfly/">butterfly主题github地址</a></p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>旅游网项目小结</title>
     <url>/2020/08/28/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<hr style=" border:solid; width:900px; height:1px;" color=#000000 size=1">
@@ -66,71 +134,113 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo+github搭建个人博客</title>
-    <url>/2020/09/06/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h1><p>hexo支持markdown语法，它是基于nodejs的静态网站生成框架，nodejs是一个基于Chrome的JavaScript运行环境，要想运行hexo首先要安装其运行环境nodejs。</p>
+    <title>TCP与UDP总结</title>
+    <url>/2020/10/06/TCP%E4%B8%8EUDP%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h1><h2 id="UDP概述"><a href="#UDP概述" class="headerlink" title="UDP概述"></a>UDP概述</h2><p>用户数据报协议 UDP 只在 IP 的数据报服务之上增加了很少一点的功能，这就是复用和分用的功能以及查错检测的功能</p>
+<p><a href="https://imgchr.com/i/0tgmJx"><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgmJx.md.png" alt="0tgmJx.md.png"></a></p>
+<h2 id="UDP特点"><a href="#UDP特点" class="headerlink" title="UDP特点"></a>UDP特点</h2><ul>
+<li>面向无连接的协议</li>
+<li>不能保证可靠的交付数据</li>
+<li>面向报文传输</li>
+<li>UDP没有拥塞控制</li>
+<li>UDP首部开销小</li>
+</ul>
+<h2 id="UDP首部"><a href="#UDP首部" class="headerlink" title="UDP首部"></a>UDP首部</h2><p><a href="https://imgchr.com/i/0tgnW6"><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgnW6.md.png" alt="0tgnW6.md.png"></a></p>
+<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><h2 id="TCP协议特点"><a href="#TCP协议特点" class="headerlink" title="TCP协议特点"></a>TCP协议特点</h2><ul>
+<li><p>面向连接的协议</p>
+</li>
+<li><p>TCP连接有两个端点是点对点的通信</p>
+</li>
+<li><p>提供可靠的传输服务</p>
+</li>
+<li><p>全双工的通信</p>
+</li>
+<li><p>面向字节流（udp是面向报文的协议）：tcp数据报是以字节为单位。</p>
+</li>
+</ul>
+<p><a href="https://imgchr.com/i/0tgiyF"><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgiyF.md.png" alt="0tgiyF.md.png"></a></p>
+<h2 id="TCP首部"><a href="#TCP首部" class="headerlink" title="TCP首部"></a>TCP首部</h2><p><a href="https://imgchr.com/i/0tglOe"><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tglOe.md.png" alt="0tglOe.md.png"></a></p>
 <ul>
-<li>nodejs的安装<br><a href="https://nodejs.org/dist/v9.11.1/node-v9.11.1-x64.msi">nodejs win 64 下载地址</a><br>下载下来一路next即可<br>安装完成后，打开命令行输入 node -v 和 npm -v 显示出版本信息就是安装成功了！<br>为了加快访问速度，输入以下命令添加阿里镜像进行加速<blockquote>
-<p>npm config set registry <a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></p>
-</blockquote>
-<h1 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h1><a href="https://git-scm.com/download/win">git下载地址</a><br>git是一个分布式版本控制工具，安装git可以将我们的博客网页部署到服务器上。git的安装也是很简单，安装时选项全部默认，只不过最后一步选<br>Use Git from the Windows Command Prompt</li>
+<li>源、目标端口号字段：占16比特。TCP协议通过使用”端口”来标识源端和目标端的应用进程。端口号可以使用0到65535之间的任何数字。在收到服务请求时，操作系统动态地为客户端的应用程序分配端口号。在服务器端，每种服务在”众所周知的端口”（Well-Know Port）为用户提供服务。 </li>
+<li>顺序号字段：占32比特。用来标识从TCP源端向TCP目标端发送的数据字节流，它表示在这个报文段中的<strong>第一个</strong>数据字节序号。</li>
+<li>确认号字段：占32比特。只有ACK标志为1时，确认号字段才有效。它包含目标端所期望收到源端的下一个数据字节。（确认号为N：则表示N-1序号的数据都已经收到）</li>
+<li>头部长度字段：占4比特。给出头部占32比特的数目。没有任何选项字段的TCP头部长度为20字节；最多可以有60字节的TCP头部。</li>
+<li>标志位字段（U、A、P、R、S、F）：占6比特。各比特的含义如下： <ul>
+<li><a href="https://imgchr.com/i/0tgFL4"><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgFL4.md.png" alt="0tgFL4.md.png"></a></li>
 </ul>
-<p>点击finish。接着我们在命令提示符中输入git –version显示版本信息则我们的git安装成功！</p>
-<h1 id="github新建仓库"><a href="#github新建仓库" class="headerlink" title="github新建仓库"></a>github新建仓库</h1><ul>
-<li>新建仓库时，仓库的名字后面一定要加.github.io后缀。</li>
-<li>仓库建成了，点击Settings，下拉到最后选择GitHub Pages，点击Choose a theme选择一个主题。然后等一会儿，再回到GitHub Pages，会有一个超链接，这个链接就是我们的博客网址了。<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1></li>
-<li>在合适的地方新建一个目录来存放你的博客，然后在新建的目录下打开git的控制台窗口：<br><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/09/06/wZQZin.md.png" alt="打开控制台在这里面输入命令安装hexo"></li>
+</li>
+<li>窗口大小字段：占16比特。此字段用来进行流量控制。单位为字节数，允许对方发送的数据量。</li>
+<li>TCP校验和字段：占16比特。对整个TCP报文段，即TCP头部和TCP数据进行校验和计算，并由目标端进行验证。</li>
+<li>紧急指针字段：占16比特。它是一个偏移量，和序号字段中的值相加表示紧急数据最后一个字节的序号。 </li>
+<li>选项字段：占32比特。可能包括”窗口扩大因子”、”时间戳”等选项。</li>
 </ul>
+<h2 id="可靠传输的基本原理"><a href="#可靠传输的基本原理" class="headerlink" title="可靠传输的基本原理"></a>可靠传输的基本原理</h2><h3 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h3><p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgKSK.png" alt="0tgKSK.png"></p>
+<p>出现差错的三种情况：</p>
 <ul>
-<li><p>好的，我们现在就在我们刚刚新建的目录下面，接着输入npm i hexo-cli -g安装Hexo。会有几个报错，不要管它，输入 hexo -v 验证是否安装成功，出现版本信息则安装成功！</p>
-</li>
-<li><p>接着输入hexo init初始化我们新建的博客文件夹，接着输入npm install安装依赖。</p>
-</li>
-<li><p>好了，到这里我们可以来测试下hexo了，输入hexo g生成静态网页，然后输入hexo s打开本地服务器，浏览器打开<a href="http://localhost:4000/%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%88%91%E4%BB%AC%E7%9A%84%E5%8D%9A%E5%AE%A2%E4%BA%86%E3%80%82%E7%8E%B0%E5%9C%A8%E6%88%91%E4%BB%AC%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%BF%98%E6%98%AF%E5%9C%A8%E6%9C%AC%E5%9C%B0%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%88%91%E4%BB%AC%E8%A6%81%E5%88%A9%E7%94%A8git%E5%B0%86%E5%85%B6%E9%83%A8%E7%BD%B2%E5%88%B0%E8%BF%9C%E7%A8%8B%E7%9A%84github%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%88%AB%E4%BA%BA%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE%E5%88%B0%E6%88%91%E4%BB%AC%E7%9A%84%E5%8D%9A%E5%AE%A2%E4%BA%86%E3%80%82">http://localhost:4000/就可以看到我们的博客了。现在我们的博客还是在本地，接下来我们要利用git将其部署到远程的github服务器上，这样别人就可以访问到我们的博客了。</a></p>
-</li>
+<li>发送的消息在路上丢失了</li>
+<li>确认的消息在路上丢失了</li>
+<li>确认的消息很久才收到</li>
 </ul>
-<h1 id="连接Github"><a href="#连接Github" class="headerlink" title="连接Github"></a>连接Github</h1><ul>
-<li><p>打开git bash，然后输入下面命令：</p>
-<blockquote>
-<p> git config –global user.name “你的github用户面积”<br>git config –global user.email “你的github注册邮箱”</p>
-</blockquote>
-</li>
-</ul>
+<p>停止等待协议如何保证解决上述三种差错保证可靠传输：</p>
 <ul>
-<li><p>输入以下命令生成密钥SSH key：</p>
-<blockquote>
-<p>ssh-keygen -t rsa -C “你的github注册邮箱”</p>
-</blockquote>
-</li>
-<li><p>登录github，进入settings，再点击SSH and GPG keys，新建一个SSH。</p>
-</li>
-<li><p>git bash中输入：</p>
-<blockquote>
-<p>cat ~/.ssh/id_rsa.pub</p>
-</blockquote>
-<p>将id_ras.pub公钥里面的内容填入github新建密钥的框中，保存。</p>
-</li>
-<li><p>控制台，输入ssh -T <a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#111;&#109;">&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#111;&#109;</a>，出现你的用户名则连接github成功！</p>
-</li>
-<li><p>打开我们刚刚初始化的博客目录，找到_config.yml文件，配置部署的相关信息：<br>deploy:<br>type: git<br>repository:这里填你github博客仓库的地址<br>  branch: master<br>repository修改为你自己的github项目地址。</p>
-<h1 id="安装部署工具"><a href="#安装部署工具" class="headerlink" title="安装部署工具"></a>安装部署工具</h1></li>
+<li>通过超时重传保证可靠传输</li>
+<li>每发送一个消息定义一个定时器</li>
 </ul>
-<p>首先在博客根目录下打开git bash，输入：</p>
-<blockquote>
-<p>npm i hexo-deployer-git</p>
-</blockquote>
-<p>npm会帮我们安装好部署工具，以后我们就可以实现一键部署我们的博客了！</p>
-<h1 id="写博客-部署"><a href="#写博客-部署" class="headerlink" title="写博客 部署"></a>写博客 部署</h1><p>在博客目录下打开git bash 输入hexo new post “article title”，新建一篇文章。你会看到在当前的source_posts的目录中多了一个.md文件，这就是你新建的文章了。</p>
-<p>接下来我们可以打开这个md文件用markdown编写博客。编写完成保存！</p>
-<p>然后输入hexo g生成静态网页，生成的静态网页在根目录下的public文件夹中，输入hexo server 可以本地预览自己的博客，输入hexo d的话就上传到github上，刷新github，在地址栏输入自己的博客网址打开主页，我们就可以看到自己的文章了！</p>
-<h1 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h1><p>可能有很多人觉得这个默认的主题不好看，没关系我们可以自己选择自己喜欢的主题。我选择的主题是butterfly，简单明了，配置多样，当然好像选next的更多hhh。<br>这是butterfly主题的下载地址：<a href="https://github.com/jerryc127/hexo-theme-butterfly/">butterfly主题github地址</a></p>
+<p>协议存在的问题：因为是同步传输的，传输效率比较低。信道的复用率低。</p>
+<h3 id="连续ARQ协议（自动重传请求）"><a href="#连续ARQ协议（自动重传请求）" class="headerlink" title="连续ARQ协议（自动重传请求）"></a>连续ARQ协议（自动重传请求）</h3><p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgMQO.png" alt="0tgMQO.png"></p>
+<p>TCP的可靠传输基于连续ARQ协议</p>
+<p>TCP的滑动窗口以字节为单位</p>
+<ul>
+<li><p>TCP协议的选择重传（需要重传的开始字节序列号和结束字节序列号在头部的选项字段中）</p>
+<p><a href="https://imgchr.com/i/0tgQyD"><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgQyD.md.png" alt="0tgQyD.md.png"></a></p>
+</li>
+</ul>
+<h2 id="TCP-的流量控制"><a href="#TCP-的流量控制" class="headerlink" title="TCP 的流量控制"></a>TCP 的流量控制</h2><p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgAeJ.png" alt="0tgAeJ.png"></p>
+<p>坚持定时器的作用：解决死锁现象的发生。</p>
+<h2 id="tcp拥塞控制"><a href="#tcp拥塞控制" class="headerlink" title="tcp拥塞控制"></a>tcp拥塞控制</h2><ul>
+<li><p>拥塞控制和流量控制的区别：</p>
+<p>拥塞控制考虑的是整个网络，是全局性的考虑。而流量控制考虑的是点对点的通信控制。</p>
+</li>
+<li><p>拥塞控制的两个算法：</p>
+<ul>
+<li><p>慢启动算法</p>
+</li>
+<li><p>拥塞避免算法</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgeF1.png" alt="0tgeF1.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="TCP连接的建立"><a href="#TCP连接的建立" class="headerlink" title="TCP连接的建立"></a>TCP连接的建立</h2><ul>
+<li>TCP的三次握手</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgVoR.png" alt="0tgVoR.png"></p>
+<p><strong>问题</strong>：为什么要三次握手？</p>
+<p> 防止失效的连接请求报文段被服务端接收，从而产生错误。</p>
+<p>失效的连接请求：若客户端向服务端发送的连接请求丢失，客户端等待应答超时后就会再次发送连接请求，此时，上一个连接请求就是<strong>失效的</strong>。</p>
+<p>若建立连接只需两次握手，客户端并没有太大的变化，仍然需要获得服务端的应答后才进入ESTABLISHED状态，而服务端在收到连接请求后就进入ESTABLISHED状态。此时如果网络拥塞，客户端发送的连接请求迟迟到不了服务端，客户端便超时重发请求，如果服务端正确接收并确认应答，双方便开始通信，通信结束后释放连接。此时，如果那个失效的连接请求抵达了服务端，由于只有两次握手，服务端收到请求就会进入ESTABLISHED状态，等待发送数据或主动发送数据。但此时的客户端早已进入CLOSED状态，服务端将会一直等待下去，这样浪费服务端连接资源。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0txv79.png" alt="0txv79.png"></p>
+<h2 id="TCP连接的释放"><a href="#TCP连接的释放" class="headerlink" title="TCP连接的释放"></a>TCP连接的释放</h2><ul>
+<li>TCP四次挥手</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/06/0tgEw9.png" alt="0tgEw9.png"></p>
+<p><strong>问题</strong>：为什么要等待2MSL（报文最长存活时间）</p>
+<ul>
+<li>最后一个报文没有确认</li>
+<li>确保发送方的ACK可以到达接收方</li>
+<li>2msl时间内没有收到，则接收方会重发</li>
+<li>确保当前连接的报文都已经过期</li>
+</ul>
+<h2 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h2><p>一个套接字指一个IP地址和一个端口的组合，两个套接字可以唯一确定一条tcp连接</p>
+<p><strong>问题</strong>：网络套接字和域套接字的区别?</p>
+<p>域套接字不需要经过网络协议栈，可以直接进行传输，传输快，适用与单机通信。而网络套接字需要走一遍完整的网络协议栈，传输速度比域套接字慢。</p>
 ]]></content>
       <categories>
-        <category>博客</category>
+        <category>计算机网络</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
-        <tag>git</tag>
+        <tag>UDP协议</tag>
+        <tag>TCP协议</tag>
       </tags>
   </entry>
 </search>
