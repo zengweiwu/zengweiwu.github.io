@@ -243,4 +243,60 @@
         <tag>TCP协议</tag>
       </tags>
   </entry>
+  <entry>
+    <title>HTTPS的加密</title>
+    <url>/2020/10/14/HTTPS%E7%9A%84%E5%8A%A0%E5%AF%86/</url>
+    <content><![CDATA[<h2 id="HTTP协议与HTTPS协议"><a href="#HTTP协议与HTTPS协议" class="headerlink" title="HTTP协议与HTTPS协议"></a>HTTP协议与HTTPS协议</h2><ul>
+<li>HTTP 协议（HyperText Transfer Protocol，超文本传输协议）：是客户端浏览器或其他程序与Web服务器之间的应用层通信协议 。</li>
+<li>HTTPS 协议（HyperText Transfer Protocol over Secure Socket  Layer）：可以理解为HTTP+SSL/TLS， 即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL，用于安全的 HTTP 数据传输。传输的端口：443。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/14/043edf.md.png" alt="http与https"></p>
+<h2 id="HTTPS协议的加密"><a href="#HTTPS协议的加密" class="headerlink" title="HTTPS协议的加密"></a>HTTPS协议的加密</h2><h2 id="关于加密解密"><a href="#关于加密解密" class="headerlink" title="关于加密解密"></a>关于加密解密</h2><p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/14/043mo8.md.png" alt="关于加密解密"></p>
+<h2 id="加密模式"><a href="#加密模式" class="headerlink" title="加密模式"></a>加密模式</h2><ul>
+<li><p>对称加密</p>
+<p>加密和解密都用同一个密钥。</p>
+</li>
+<li><p>非对称加密</p>
+<p>加密使用的密钥和解密使用的密钥是不相同的，分别称为：公钥、私钥，公钥和算法都是公开的，私钥是保密的。非对称加密算法性能较低，但是安全性超强，由于其加密特性，非对称加密算法能加密的数据长度也是有限的。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/14/043KJg.md.png" alt="非对称加密"></p>
+</li>
+<li><p>哈希算法</p>
+<p>将任意长度的信息转换为较短的固定长度的值。</p>
+</li>
+</ul>
+<h2 id="为什么要给HTTP加密？"><a href="#为什么要给HTTP加密？" class="headerlink" title="为什么要给HTTP加密？"></a>为什么要给HTTP加密？</h2><p>因为http的内容是明文传输的，明文数据会经过中间代理服务器、路由器、wifi热点、通信服务运营商等多个物理节点，如果信息在传输过程中被劫持，传输的内容就完全暴露了，他人还可以篡改传输的信息且不被双方察觉，还可以冒充服务器身份与客户端进行通信。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/14/043MWQ.png" alt="为什么要给http加密"></p>
+<h2 id="用什么方式给HTTP加密？"><a href="#用什么方式给HTTP加密？" class="headerlink" title="用什么方式给HTTP加密？"></a>用什么方式给HTTP加密？</h2><ul>
+<li><p>使用对称加密</p>
+<p>首先我们考虑到的就是用最简单的对称加密，客户端和服务器使用同一个密钥进行加密和解密。这种加密方式很简单，而且传输速度也比较快，但是存在最大的问题就是：如何将密钥传递给对方？我们好像只能通过明文传输给对方。如果黑客在传递密钥时将密钥窃取，那么我们之后传输的内容相当于没有加密，因为黑客知道密钥，我们发送的密文对于他来说是透明的。这种方式显然是不可行的。</p>
+</li>
+<li><p>使用非对称加密</p>
+<p>如果只是单纯的使用非对称加密，因为非对称加密每一次加密解密的时间会比较长，所以数据在网络中的传输速度会比较慢，影响传输的速度。这种方式虽然安全但是速度比较慢，所以也不是很合适。</p>
+</li>
+<li><p>使用对称加密和非对称加密混合</p>
+<p>这种方式综合了以上两种加密方式的优点，安全且传输速度也快，HTTP正是采用这种混合加密的方式。它是怎么工作的呢？首先它先用非对称加密的方式将对称加密的密钥安全地传输给对方，当双方都知道对称加密的密钥时，之后传输数据就用对称加密的方式，这样保证了传输的速度。</p>
+</li>
+</ul>
+<h2 id="HTTPS加密过程"><a href="#HTTPS加密过程" class="headerlink" title="HTTPS加密过程"></a>HTTPS加密过程</h2><p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/14/043uFS.png" alt="https加密过程"></p>
+<h2 id="数字证书和数字签名"><a href="#数字证书和数字签名" class="headerlink" title="数字证书和数字签名"></a>数字证书和数字签名</h2><ul>
+<li><p>数字证书</p>
+<p>数字证书是由权威机构CA证书授权中心发行的，能提供在Internet上进行身份验证的一种权威性电子文档。</p>
+<p>作用：解决的是服务器公钥被冒用的问题。</p>
+</li>
+<li><p>数字签名</p>
+<p>数字签名是一种类似写在纸上的普通的物理签名，但是使用了公钥加密领域的技术实现，用于鉴别数字信息的方法。</p>
+<p>作用：通过对比签名可以验证传输过程中数据是否被更改过。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s1.ax1x.com/2020/10/14/043ZeP.png" alt="数字签名的生成过程"></p>
+</li>
+</ul>
+<p>关于数字签名和数字证书的解释这篇博客解释得很好，在这mark下</p>
+<p><a href="https://blog.csdn.net/qq_26566331/article/details/88185652">数字签名和数字证书详解</a></p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>HTTPS</tag>
+      </tags>
+  </entry>
 </search>
